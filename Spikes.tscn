@@ -1,14 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://tiles_packed.png" type="Texture" id=1]
+[ext_resource path="res://Spikes.gd" type="Script" id=2]
 
 [node name="Spikes" type="Area2D"]
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -15.75 )
-scale = Vector2( 2.74609, 2.86364 )
+position = Vector2( 0.910644, -11.5 )
+scale = Vector2( 1.56548, 1.27778 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 144, 61, 18, 11 )
+region_rect = Rect2( 144, 54, 18, 18 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -0.267045, 0 )
+scale = Vector2( 0.767045, 1 )
+polygon = PoolVector2Array( -12.6889, -1, -12.6889, -4, -8.77778, -9, -3.56296, -9, -0.955557, -4, 2.95555, -4, 6, -9, 12.0815, -9, 15.9926, -4, 15.9926, 0, -12.6889, 0 )
+
+[connection signal="body_entered" from="." to="." method="_on_Spikes_body_entered"]
