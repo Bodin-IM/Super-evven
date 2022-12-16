@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=2]
+
+[sub_resource type="StreamTexture" id=7]
+load_path = "res://.import/characters_packed.png-890290c811414ed077a6b10fd28e12f1.stex"
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = SubResource( 7 )
+region = Rect2( 0, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = SubResource( 7 )
+region = Rect2( 24, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = SubResource( 7 )
+region = Rect2( 0, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = SubResource( 7 )
+region = Rect2( 24, 24, 24, 24 )
+
+[resource]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": false,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ) ],
+"loop": false,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 4 ) ],
+"loop": true,
+"name": "Run",
+"speed": 5.0
+} ]

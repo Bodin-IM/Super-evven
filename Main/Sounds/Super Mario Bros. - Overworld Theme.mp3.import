@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Super Mario Bros. - Overworld Theme.mp3-3d312aa4aa01ba6799190e44d02df607.mp3str"
+
+[deps]
+
+source_file="res://Main/Sounds/Super Mario Bros. - Overworld Theme.mp3"
+dest_files=[ "res://.import/Super Mario Bros. - Overworld Theme.mp3-3d312aa4aa01ba6799190e44d02df607.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
