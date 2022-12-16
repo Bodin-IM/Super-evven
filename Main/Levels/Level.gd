@@ -22,6 +22,6 @@ func _on_player_died(): #player dies and emits signal
 	add_child(player) #adds to world
 	player.connect_camera(camera)
 	
-func _on_hit_checkpoint(checkpoint_position):
+func _on_hit_checkpoint(checkpoint_position): 
 	player_spawn_location = checkpoint_position
 	

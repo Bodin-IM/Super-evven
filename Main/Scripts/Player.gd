@@ -33,11 +33,11 @@ func _physics_process(_delta):
 
 func move_state(input):
 	
-	if is_on_ladder() and Input.is_action_pressed("ui_up"):
+	if is_on_ladder() and Input.is_action_pressed("ui_up"): #checks if character is on ladder and if "ui up" is pressed if both are true code will execute
 		state = CLIMB
 		
-	apply_gravity()
-	if input.x == 0:
+	apply_gravity() #apply gravity function makes it so if character isnt on floor or a ladder they fall.
+	if input.x == 0: #checks if character is moving left or right
 		apply_friction()
 		animatedSprite.animation = "Idle"
 	else:
@@ -45,28 +45,28 @@ func move_state(input):
 		animatedSprite.animation = "Run"
 		animatedSprite.flip_h = input.x > 0
 		
-	if is_on_floor():
+	if is_on_floor(): #checks if character is on floor
 		double_jump = moveData.DOUBLE_JUMP_COUNT #reset double jump
 	
-	if is_on_floor() or coyote_jump:
+	if is_on_floor() or coyote_jump: #if they are on floor or coyote jumping the fast fell flag is reset
 		fast_fell = false
 		
-		input_jump()
-	else:
+		input_jump() #handles jump logic
+	else:  
 		animatedSprite.animation = "Jump"
-		if Input.is_action_just_released("ui_up") and velocity.y < moveData.JUMP_RELEASE_FORCE:
+		if Input.is_action_just_released("ui_up") and velocity.y < moveData.JUMP_RELEASE_FORCE: #if the character is on floor, checks for jump input and applies jumpe force to character if detected
 			velocity.y = moveData.JUMP_RELEASE_FORCE
 		
 		if Input.is_action_just_pressed("ui_up") and double_jump > 0:
 			velocity.y = moveData.JUMP_FORCE
-			double_jump -= 1
+			double_jump -= 1 #reduces double jump counter
 			
 			
-		if Input.is_action_just_pressed("ui_up"):
+		if Input.is_action_just_pressed("ui_up"): #handles a buffered jump, which is a jump that is activated when the jump button is released after being held down.
 			buffered_jump = true
 			jumpBufferTimer.start()
 		
-		if velocity.y  > 10 and not fast_fell:
+		if velocity.y  > 10 and not fast_fell: #If the character is falling at a high speed and the "fast fell" flag is not set, the function applies additional gravity to the character to increase their falling speed.
 			velocity.y += moveData.ADDITINOAL_FALL_GRAVITY
 			fast_fell = true
 	var was_in_air = is_on_floor()
@@ -99,7 +99,6 @@ func climb_state(input):
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 func player_die():
-	SoundPlayer.play_sound()
 	queue_free()
 	Events.emit_signal("player_died")
 
@@ -115,7 +114,7 @@ func is_on_ladder(): #determines if on ladder
 	
 func apply_gravity():
 	velocity.y += moveData.GRAVITY
-	velocity.y = min(velocity.y, 300)
+	velocity.y = min(velocity.y, 300) 
 	
 func apply_friction():
 	velocity.x = move_toward(velocity.x, 0, moveData.FRICTION)
